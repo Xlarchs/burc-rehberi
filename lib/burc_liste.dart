@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class BurcListesi extends StatelessWidget {
-  List<Burc> tumBurclar;
+  static List<Burc> tumBurclar;
   @override
   Widget build(BuildContext context) {
     tumBurclar = veriKaynaginiHazirla();
@@ -44,34 +44,40 @@ class BurcListesi extends StatelessWidget {
   Widget tekSatirBurcWidget(context, index) {
     Burc listeyeEklenenBurclar = tumBurclar[index];
     return Card(
-      elevation: 4,
-      child: ListTile(
-        leading: Image.asset(
-          "images/" + listeyeEklenenBurclar.burcKucukResim,
-          width: 64,
-          height: 64,
-        ),
-        title: Text(
-          listeyeEklenenBurclar.burcAdi,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w400,
-            color: Colors.pink.shade500,
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: ListTile(
+            onTap: () => Navigator.pushNamed(context, "/burcDetay/$index"),
+            leading: Image.asset(
+              "images/" + listeyeEklenenBurclar.burcKucukResim,
+              width: 64,
+              height: 64,
+            ),
+            title: Text(
+              listeyeEklenenBurclar.burcAdi,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w400,
+                color: Colors.pink.shade500,
+              ),
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text(
+                listeyeEklenenBurclar.burcTarihi,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black87,
+                ),
+              ),
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.pink,
+            ),
           ),
-        ),
-        subtitle: Text(
-          listeyeEklenenBurclar.burcTarihi,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-            color: Colors.black87,
-          ),
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios,
-          color: Colors.pink,
-        ),
-      ),
-    );
+        ));
   }
 }
