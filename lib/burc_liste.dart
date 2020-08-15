@@ -73,9 +73,12 @@ class BurcListesi extends StatelessWidget {
                 ),
               ),
             ),
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.pink,
+            trailing: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.pink,
+              ),
             ),
           ),
         ));
